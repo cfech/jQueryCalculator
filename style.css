@@ -2,3 +2,13 @@
 button > span {
     font-size: 2.5rem;
 }
+.btn{
+    width: 22%;
+}
+#button-clear{
+    width: 50% !important;
+}
+
+.container{
+    margin: auto;
+}
