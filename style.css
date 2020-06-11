@@ -12,3 +12,22 @@ button > span {
 .container{
     margin: auto;
 }
+.errorMsg{
+    color: red;
+    font-size: 30px;
+    text-align: center;
+}
+
+body{
+    background-color: #83AF83;
+}
+
+.jumbotron{
+    background-color: black;
+    color: white;
+}
+
+.calcBody{
+    background-color: darkgray;
+    color: white;
+}

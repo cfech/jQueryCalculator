@@ -63,7 +63,9 @@ $(".operator").on("click", function () {
 
 
     } else {
-      alert("operator selected "+ "'" +operator+"'")
+        $("#oas").removeClass("d-none")
+        $("#oas").text("operator already selected " +"'"+operator+"'")
+    //   alert("operator selected "+ "'" +operator+"'")
     }
 })
 
@@ -97,7 +99,14 @@ $(".equal").on("click", function () {
         $("#result").text(answer)
     }
     else {
-        alert("Please select a first number, second number and an operator fo the calculator to function correctly")
+        // alert("Please select a first number, second number and an operator fo the calculator to function correctly")
+ 
+        $("#fne").removeClass("d-none")
+       $(".lineBreak").removeClass("d-none")
+    
+    
+    
+    
     }
 })
 
@@ -116,6 +125,9 @@ $(".clear").on("click", function () {
     $("#result").empty()
     numberSelector = false
     operatorSelector = false
+    $("#fne").addClass("d-none")
+    $("#oas").addClass("d-none")
+    $(".lineBreak").addClass("d-none")
 
 })
 })
