@@ -1,4 +1,4 @@
-
+$(document).ready(function () {
 var firstNumber = ''
 var secondNumber = ""
 var operator = ""
@@ -117,4 +117,5 @@ $(".clear").on("click", function () {
     numberSelector = false
     operatorSelector = false
 
+})
 })
