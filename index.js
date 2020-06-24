@@ -1,133 +1,106 @@
 $(document).ready(function () {
-var firstNumber = ''
-var secondNumber = ""
-var operator = ""
-var result = 0
-var numberSelector = false
-var operatorSelector = false
+    var firstNumber = ''
+    var secondNumber = ""
+    var operator = ""
+    var result = 0
+    var numberSelector = false
+    var operatorSelector = false
 
-//number selectors 
-$(".number").on("click", function () {
-    console.log("hello")
+    //number selectors 
+    $(".number").on("click", function () {
+        if (numberSelector === false) {
+            firstNumber = firstNumber + $(this).val()
+            $("#first-number").text(firstNumber)
+        } else {
+            secondNumber = secondNumber + $(this).val()
+            $("#second-number").text(secondNumber)
+        }
+    })
 
-    if (numberSelector === false) {
+    // operator selector 
+    $(".operator").on("click", function () {
+        if (operatorSelector === false) {
+            operatorSelector = true
+            numberSelector = true
+
+            operator = $(this).val()
+
+            let op
+
+            switch (operator) {
+                case ("plus"):
+                    op = "+"
+                    break;
+                case ("minus"):
+                    op = "-"
+                    break;
+                case ("times"):
+                    op = "*"
+                    break;
+                case ("divide"):
+                    op = "/"
+                    break;
+                case ("power"):
+                    op = "^"
+                    break;
+            }
+
+            $("#operator").text(op)
+
+        } else {
+            $("#oas").removeClass("d-none")
+            $("#oas").text("operator already selected " + "'" + operator + "'")
+        }
+    })
 
 
-
-        firstNumber = firstNumber + $(this).val()
-        console.log("firstNumber", firstNumber)
-        $("#first-number").text(firstNumber)
-
-    } else {
-        secondNumber = secondNumber + $(this).val()
-        console.log("secondNumber", secondNumber)
-        $("#second-number").text(secondNumber)
-
-    }
-})
-
-// operator selector 
-$(".operator").on("click", function () {
-    if (operatorSelector === false) {
-        operatorSelector = true
-        numberSelector = true
-        console.log("operatorSelector", operatorSelector)
-
-        console.log($(this).val())
-
-        operator = $(this).val()
-        let op
+    // cases for calculate function
+    function calculate() {
         switch (operator) {
             case ("plus"):
-                op = "+"
-                break;
+                return parseInt(firstNumber) + parseInt(secondNumber);
             case ("minus"):
-                op = "-"
-                break;
+                return parseInt(firstNumber) - parseInt(secondNumber);
             case ("times"):
-                op = "*"
-                break;
+                return parseInt(firstNumber) * parseInt(secondNumber);
             case ("divide"):
-                op = "/"
-                break;
+                return parseInt(firstNumber) / parseInt(secondNumber);
             case ("power"):
-                op = "^"
-                break;
+                return Math.pow(parseInt(firstNumber), parseInt(secondNumber));
         }
-
-
-
-        console.log("operator", operator)
-        $("#operator").text(op)
-
-
-
-    } else {
-        $("#oas").removeClass("d-none")
-        $("#oas").text("operator already selected " +"'"+operator+"'")
-    //   alert("operator selected "+ "'" +operator+"'")
-    }
-})
-
-
-// cases for calculate function
-function calculate() {
-    console.log("hello")
-    console.log(operator)
-    switch (operator) {
-        case ("plus"):
-            return parseInt(firstNumber) + parseInt(secondNumber);
-        case ("minus"):
-            return parseInt(firstNumber) - parseInt(secondNumber);
-        case ("times"):
-            return parseInt(firstNumber) * parseInt(secondNumber);
-        case ("divide"):
-            return parseInt(firstNumber) / parseInt(secondNumber);
-        case ("power"):
-            return Math.pow(parseInt(firstNumber), parseInt(secondNumber));
     }
 
-}
 
 
+    // equals on click
+    $(".equal").on("click", function () {
+        if (firstNumber !== "" && secondNumber !== "" && operator !== "") {
+            var answer = calculate()
+            $("#result").text(answer)
+        }
+        else {
+            $("#fne").removeClass("d-none")
+            $(".lineBreak").removeClass("d-none")
+        }
+    })
 
-// equals on click
-$(".equal").on("click", function () {
-    if (firstNumber !== "" && secondNumber !== "" && operator !== "") {
-        var answer = calculate()
-        console.log("answer", answer)
-        $("#result").text(answer)
-    }
-    else {
-        // alert("Please select a first number, second number and an operator fo the calculator to function correctly")
- 
-        $("#fne").removeClass("d-none")
-       $(".lineBreak").removeClass("d-none")
-    
-    
-    
-    
-    }
-})
+    // clear button
+    $(".clear").on("click", function () {
+        console.log("clearing")
+        firstNumber = ""
+        $("#first-number").empty()
+        secondNumber = ""
+        $("#second-number").empty()
+        operator = ""
+        op = ""
+        $("#operator").empty()
 
-// clear button
-$(".clear").on("click", function () {
-    console.log("clearing")
-    firstNumber = ""
-    $("#first-number").empty()
-    secondNumber = ""
-    $("#second-number").empty()
-    operator = ""
-    op = ""
-    $("#operator").empty()
-
-    answer = ""
-    $("#result").empty()
-    numberSelector = false
-    operatorSelector = false
-    $("#fne").addClass("d-none")
-    $("#oas").addClass("d-none")
-    $(".lineBreak").addClass("d-none")
-
-})
+        answer = ""
+        $("#result").empty()
+        numberSelector = false
+        operatorSelector = false
+        $("#fne").addClass("d-none")
+        $("#oas").addClass("d-none")
+        $(".lineBreak").addClass("d-none")
+    })
 })
