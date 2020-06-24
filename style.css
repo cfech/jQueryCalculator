@@ -11,6 +11,7 @@ button > span {
 
 .container{
     margin: auto;
+    width: 80%;
 }
 .errorMsg{
     color: red;
@@ -31,3 +32,28 @@ body{
     background-color: #A39393;
     color: white;
 }
+/* #first-number
+#second-number
+{
+    background-color: white;
+    opacity: 50%;
+    color: black;
+} */
+
+
+#first-number,
+#second-number,
+#operator, 
+#result{
+    background-color: black;
+    opacity: 50%;
+    color: white;
+}
+
+#eq{
+margin-right: 5px;
+}
+/* 
+#screen{
+
+} */
